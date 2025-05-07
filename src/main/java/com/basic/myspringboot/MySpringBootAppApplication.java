@@ -11,7 +11,7 @@ public class MySpringBootAppApplication {
 	public static void main(String[] args) {
 //		SpringApplication.run(MySpringBootAppApplication.class, args);
 		SpringApplication application = new SpringApplication(MySpringBootAppApplication.class);
-		application.setWebApplicationType(WebApplicationType.NONE);
+		application.setWebApplicationType(WebApplicationType.SERVLET);
 		application.run(args);
 	}
 
