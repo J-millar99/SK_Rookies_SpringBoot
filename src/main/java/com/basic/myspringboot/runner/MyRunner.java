@@ -29,7 +29,6 @@ public class MyRunner implements ApplicationRunner {
     @Autowired
     private CustomerVO customerVO;
 
-    @Autowired
     private Logger logger = LoggerFactory.getLogger(MyRunner.class);
 
     @Override
