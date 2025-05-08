@@ -1,5 +1,6 @@
 package com.basic.myspringboot.runner;
 
+import com.basic.myspringboot.config.CustomerVO;
 import com.basic.myspringboot.property.MyBootProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,6 +24,9 @@ public class MyRunner implements ApplicationRunner {
     @Autowired
     private MyBootProperties properties;
 
+    @Autowired
+    private CustomerVO customerVO;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("${myboot.name} = " + name);
@@ -34,6 +38,9 @@ public class MyRunner implements ApplicationRunner {
         System.out.println("MyBootProperties getFullName() " + properties.getFullName());
 
         System.out.println("현재 설정된 Port 번호 " + environment.getProperty("local.server.port"));
+
+        System.out.println("현재 활성화된 CustomerVO Bean" + customerVO);
+
         // foo 라는 VM 아큐먼트가 있는지 확인
         System.out.println("VM argument foo : " + args.containsOption("foo"));
         // bar 라는 Program 아규먼트가 있는지 확인
