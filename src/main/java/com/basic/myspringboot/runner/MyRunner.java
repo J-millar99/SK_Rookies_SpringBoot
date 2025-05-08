@@ -34,22 +34,21 @@ public class MyRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("${myboot.name} = " + name);
-        System.out.println("${myboot.age} = " + age);
-        System.out.println("${myboot.fullname} = " + environment.getProperty("myboot.fullName"));
+        logger.debug("${myboot.name} = {}", name);
+        logger.debug("${myboot.age} = {}", age);
+        logger.debug("${myboot.fullname} = {}", environment.getProperty("myboot.fullName"));
 
-        System.out.println("MyBootProperties getName() " + properties.getName());
-        System.out.println("MyBootProperties getAge() " + properties.getAge());
-        System.out.println("MyBootProperties getFullName() " + properties.getFullName());
+        logger.info("MyBootProperties getName() = {}", properties.getName());
+        logger.info("MyBootProperties getAge() = {}", properties.getAge());
+        logger.info("MyBootProperties getFullName() = {}", properties.getFullName());
+        logger.info("현재 설정된 Port 번호: {}", environment.getProperty("local.server.port"));
 
-        System.out.println("현재 설정된 Port 번호 " + environment.getProperty("local.server.port"));
-
-        System.out.println("현재 활성화된 CustomerVO Bean" + customerVO);
+        logger.info("현재 활성화된 CustomerVO Bean {}", customerVO);
 
         // foo 라는 VM 아큐먼트가 있는지 확인
-        System.out.println("VM argument foo : " + args.containsOption("foo"));
+        logger.debug("VM argument foo : {}", args.containsOption("foo"));
         // bar 라는 Program 아규먼트가 있는지 확인
-        System.out.println("Program argument bar : " + args.containsOption("bar"));
+        logger.debug("Program argument bar : {}", args.containsOption("bar"));
 
         /*
             Iterable forEach(Consumer)
