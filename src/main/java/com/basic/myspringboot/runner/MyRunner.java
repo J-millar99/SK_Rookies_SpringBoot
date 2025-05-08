@@ -16,7 +16,8 @@ public class MyRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-
+        System.out.println("${myboot.name} = " + name);
+        System.out.println("{myboot.age} = " + age);
         // foo라는 VM 아큐먼트가 있는지 확인
         System.out.println("VM argument foo : " + args.containsOption("foo"));
         // bar 라는 Program 아규먼트가 있는지 확인
