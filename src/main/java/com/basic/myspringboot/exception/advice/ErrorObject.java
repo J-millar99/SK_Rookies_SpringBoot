@@ -1,4 +1,4 @@
-package com.basic.myspringboot.exception;
+package com.basic.myspringboot.exception.advice;
 
 import lombok.Data;
 
