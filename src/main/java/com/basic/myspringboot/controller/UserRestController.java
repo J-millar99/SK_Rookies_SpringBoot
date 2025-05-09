@@ -1,10 +1,9 @@
 package com.basic.myspringboot.controller;
 
-import com.basic.myspringboot.entity.Customer;
 import com.basic.myspringboot.entity.User;
-import com.basic.myspringboot.repository.CustomerRepository;
 import com.basic.myspringboot.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,13 +35,15 @@ public class UserRestController {
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         Optional<User> optionalUser = userRepository.findById(id);
-//        // public <U> Optional<U> map(Function<? super T, ? extends U> mapper)
-//        // Function의 추상메서드 R Apply(T t)
-//        ResponseEntity<User> responseEntity = optionalUser.map(user -> ResponseEntity.ok(user)) // Optional<ResponseEntity>
-//                .orElse(ResponseEntity.notFound().build());
-//        return responseEntity;
+        // public <U> Optional<U> map(Function<? super T, ? extends U> mapper)
+        // Function의 추상메서드 R Apply(T t)
+        ResponseEntity<User> responseEntity = optionalUser.map(user -> ResponseEntity.ok(user)) // Optional<ResponseEntity>
+//                .orElse(ResponseEntity.notFound().build()); // User가 없는 경우 404
+                .orElse(new ResponseEntity("User Not Found", HttpStatus.NOT_FOUND));
+        return responseEntity;
 
-        return optionalUser.map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        // 축약형 람다
+//        return optionalUser.map(ResponseEntity::ok)
+//                .orElse(ResponseEntity.notFound().build());
     }
 }
