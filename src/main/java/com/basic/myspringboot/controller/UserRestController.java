@@ -1,11 +1,15 @@
 package com.basic.myspringboot.controller;
 
 import com.basic.myspringboot.entity.Customer;
+import com.basic.myspringboot.entity.User;
 import com.basic.myspringboot.repository.CustomerRepository;
 import com.basic.myspringboot.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor // final인 변수를 초기화하는 생성자를 자동으로 생성해주는 역할을 하는 롬복 어노테이션
@@ -19,4 +23,26 @@ public class UserRestController {
 //        this.userRepository = userRepository;
 //    }
 
+    @PostMapping
+    public User create(@RequestBody User user) {
+        return userRepository.save(user);
+    }
+
+    @GetMapping
+    public List<User> getUsers() {
+        return userRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        Optional<User> optionalUser = userRepository.findById(id);
+//        // public <U> Optional<U> map(Function<? super T, ? extends U> mapper)
+//        // Function의 추상메서드 R Apply(T t)
+//        ResponseEntity<User> responseEntity = optionalUser.map(user -> ResponseEntity.ok(user)) // Optional<ResponseEntity>
+//                .orElse(ResponseEntity.notFound().build());
+//        return responseEntity;
+
+        return optionalUser.map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
 }
