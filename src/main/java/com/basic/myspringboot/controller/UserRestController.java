@@ -74,6 +74,7 @@ public class UserRestController {
         User user = getExistUser(userRepository.findById(id));
         userRepository.delete(user);
 //return ResponseEntity.ok(user);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("User deleted"); // ResponseEntity<?> : 삭제 메시지가 필요할 때 status code 200
+//        return ResponseEntity.noContent().build() // // ResponseEntity<Void> : status code 204
     }
 }
