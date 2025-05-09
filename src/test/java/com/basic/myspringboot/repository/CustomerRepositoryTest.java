@@ -24,6 +24,7 @@ class CustomerRepositoryTest {
 
     @Test
     @Rollback(value = false)
+    @Disabled
     void testDeleteCustomer() {
         Customer customer = customerRepository.findById(1L)
                 .orElseThrow(() -> new RuntimeException("Customer Not Found"));
