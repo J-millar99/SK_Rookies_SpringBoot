@@ -37,7 +37,6 @@ public class UserController {
         return "index";
         //return "redirect:/index";
     }
-}
 
     @GetMapping("/thymeleaf")
     public String leaf(Model model) {
