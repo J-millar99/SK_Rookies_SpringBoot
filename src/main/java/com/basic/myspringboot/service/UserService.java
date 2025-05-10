@@ -25,7 +25,7 @@ public class UserService {
         userRepository.findByEmail(request.getEmail()) //Optional<User>
                 .ifPresent(
                         user -> {
-                    throw new BusinessException("User with this Email already Exist",HttpStatus.CONFLICT);
+                            throw new BusinessException("User with this Email already Exist",HttpStatus.CONFLICT);
                         });
         User user = request.toEntity();
         User savedUser = userRepository.save(user);
