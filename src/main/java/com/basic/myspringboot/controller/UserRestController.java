@@ -17,6 +17,10 @@ import java.util.Optional;
 public class UserRestController {
     private final UserRepository userRepository;
 
+    @GetMapping("/welcome")
+    public String welcome() {
+        return "Welcome this endpoint is not secure";
+    }
     // Constructor Injection
 //    public UserRestController(UserRepository userRepository) {
 //        System.out.println(">>> UserController " + userRepository.getClass().getName());
