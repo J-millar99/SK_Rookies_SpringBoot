@@ -10,6 +10,7 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
+// Non-Owner(종속) 양방향관계
 public class Student {
 
     @Id
