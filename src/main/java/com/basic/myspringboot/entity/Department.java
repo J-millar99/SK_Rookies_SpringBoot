@@ -30,6 +30,8 @@ public class Department {
     @OneToMany(mappedBy = "department",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
+    // 빌더 패턴을 적용했을때 변수에 명시적으로 초기화 한 값이 유지되도록 해주는 어노테이션
+    @Builder.Default
     private List<Student> students = new ArrayList<>();
     
     // Helper methods
