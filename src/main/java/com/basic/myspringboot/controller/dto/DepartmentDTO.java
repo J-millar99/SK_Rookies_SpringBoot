@@ -45,6 +45,7 @@ public class DepartmentDTO {
                     .code(department.getCode())
                     .studentCount((long) department.getStudents().size())
                     .students(department.getStudents().stream()
+//                            .map(student -> StudentDTO.SimpleResponse.fromEntity((student)))
                             .map(StudentDTO.SimpleResponse::fromEntity)
                             .collect(Collectors.toList()))
                     .build();
